@@ -8,4 +8,5 @@ color: ["#F7DF1E","#f34b7d","#38B2AC"]
 
 # Voice & Temperature Controlled Fan
 
-This was the project done in 2022
+Voice Controlled using Speech Recognision API and Temperature Controlled using DHT11 Sensor. 
+Using Socket.io for real time communication between the ESP8266 and the Webpage.

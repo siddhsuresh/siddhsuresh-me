@@ -2,10 +2,10 @@
 title: Library Project
 language: ["Python"]
 color: ["#3776AB"]
-link: "https://blueblack.onrender.com/"
+link: "https://github.com/siddhsuresh/blueblack-Library-Database-Management"
 labels: [django,python,three.js,tailwindcss]
 ---
 
 # Library Management System
 
-This was the project done in 2022
+Django based Library Management System with a simple and clean UI with a role based authorization system.

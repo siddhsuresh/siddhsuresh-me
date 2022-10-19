@@ -1,5 +1,6 @@
 ---
 title: Hackathon
+labels: [next.js,mantine.dev,tailwindcss,mongodb,express.js,ethereum]
 language: ["JavaScript","Solidity"] 
 color: ["#F7DF1E","#363636"]
 link: "https://0xticket.vercel.app/"
