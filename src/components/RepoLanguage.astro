@@ -1,0 +1,31 @@
+---
+export interface Props {
+  language: string;
+  color: string;
+}
+
+const { language, color } = Astro.props;
+---
+
+<p class="mb-0 mt-2 text-xs text-white font-semibold">
+  <span class="inline-block mr-3 gap-2">
+    <span class="repo-language-color" style={`background-color: ${color}`}
+    ></span>
+    <span>
+      {language}
+    </span>
+  </span>
+</p>
+
+<style>
+  @media all {
+    .repo-language-color {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+  }
+</style>

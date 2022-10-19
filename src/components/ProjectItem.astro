@@ -1,0 +1,86 @@
+---
+export interface Props {
+  link: string;
+  title: string;
+  summary: string;
+  labels?: string[];
+  language: string[];
+  color: string[];
+}
+
+const { link, title, summary, labels, language, color } = Astro.props;
+const languageMap = new Map();
+if (language && color) {
+  for (let i = 0; i < language.length; i++) {
+    languageMap.set(language[i], color[i]);
+  }
+}
+import RepoLanguage from "../components/RepoLanguage.astro";
+import Tooltip from "./Tooltip.astro";
+---
+
+  <a href={link} class="relative block overflow-hidden rounded-2xl max-w-md">
+    <div class="p-4" id="content">
+      <div class="p-4 flex flex-row items-center justify-between">
+        <div class="flex flex-col">
+          <h5 class="text-lg text-white gap-2">{title}</h5>
+          <div class="flex flex-row gap-2">
+            {
+              language?.map((lang) => (
+                <RepoLanguage language={lang} color={languageMap.get(lang)} />
+              ))
+            }
+          </div>
+          <div class="flex flex-wrap gap-2 p-2">
+            {
+              labels?.map((label) => (
+                <span class="text-xs bg-gray-700 text-white p-2 rounded-xl backdrop-blur-2xl">
+                  {label}
+                </span>
+              ))
+            }
+          </div>
+          <div set:html={summary} class="pt-2 prose prose-invert"></div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+<style>
+  #content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #content:before,
+  #content:after,
+  #content > :first-child:before,
+  #content > :first-child:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: #29fc9b; /* or whatever colour */
+    border-style: solid; /* or whatever style */
+    content: " ";
+  }
+  #content:before {
+    top: 0;
+    left: 0;
+    border-width: 3px 0 0 3px;
+  }
+  #content:after {
+    top: 0;
+    right: 0;
+    border-width: 3px 3px 0 0;
+  }
+  #content > :first-child:before {
+    bottom: 0;
+    right: 0;
+    border-width: 0 3px 3px 0;
+  }
+  #content > :first-child:after {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 3px 3px;
+  }
+</style>

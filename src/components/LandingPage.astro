@@ -1,0 +1,97 @@
+<canvas id="canvas" class="cursor-move absolute top-0 block w-full h-full"
+></canvas>
+
+<script>
+  import Zdog from "zdog";
+  let isSpinning = true;
+  let sceneSize = 200;
+  let displaySize;
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  let illo = new Zdog.Illustration({
+    element: "#canvas",
+    dragRotate: true,
+    zoom: 2,
+    resize: "fullscreen",
+    onResize: function (width, height) {
+      displaySize = Math.min(width, height);
+      this.zoom = Math.floor(displaySize / sceneSize);
+    },
+    // stop spinning when drag starts
+    onDragStart: function () {
+      isSpinning = false;
+    },
+  });
+
+  let anchor = new Zdog.Anchor({
+    addTo: illo,
+  });
+
+  new Zdog.Ellipse({
+    addTo: anchor,
+    diameter: 50,
+    translate: { z: 20 },
+    stroke: 10,
+    color: "#fff",
+  });
+
+  new Zdog.Shape({
+    addTo: anchor,
+    color: "#00FFDD",
+    stroke: 10,
+  });
+
+  new Zdog.Shape({
+    addTo: anchor,
+    color: "#F67280",
+    stroke: 3,
+  });
+
+  var objs = [];
+
+  for (let i = 0; i < 20; i++) {
+    let posX = getRandomInt(illo.width) - illo.width / 2;
+    let posY = getRandomInt(illo.height) - illo.height / 2;
+    let posZ = getRandomInt(illo.width) - illo.width / 2;
+    let randRot = Math.random() * 0.01;
+    let randZoom = getRandomInt(2) + 0.2;
+    let randStroke = getRandomInt(20) + 2;
+    let randDepth = getRandomInt(40) + 10;
+
+    const newObjt = anchor.copyGraph({
+      // overwrite original options
+      translate: { x: posX, y: posY, z: posZ },
+      scale: randZoom,
+    });
+
+    newObjt.children[0].stroke = randStroke;
+    newObjt.children[1].depth = randDepth;
+    newObjt.children[0].translate.x = posX;
+    newObjt.children[2].translate = { x: posX * 5, y: posY * 5, z: posZ * 5 };
+
+    objs.push({ newObjt, randRot });
+  }
+
+  anchor.remove();
+
+  function animate() {
+    // rotate anchor
+    if (isSpinning) {
+      illo.rotate.y += 0.0005;
+      illo.rotate.x += 0.0005;
+      illo.rotate.z += 0.0005;
+    }
+    objs.forEach(function (obj) {
+      let viewRotation = obj.randRot;
+      obj.newObjt.rotate.y += viewRotation;
+      viewRotation = 0;
+    });
+    illo.updateRenderGraph();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>

@@ -1,25 +1,25 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
-</header>
+<div class="z-10 p-5 flex items-center justify-center rounded-2xl bg-gray-50/0 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60" style="backdrop-filter: blur(20px);">
+  <header>
+    <nav class="flex flex-row items-center justify-center gap-4 text-lg font-semibold ">
+      <HeaderLink href="/" class="hover:underline hover:underline-offset-4 hover:text-[#F65C78]">Home</HeaderLink>
+      <!-- <HeaderLink href="/cv" class="hover:underline hover:underline-offset-4 hover:text-[#F65C78]">CV</HeaderLink> -->
+      <HeaderLink href="/projects" class="hover:underline hover:underline-offset-4 hover:text-[#F65C78]">Projects</HeaderLink>
+      <HeaderLink href="/about" class="hover:underline hover:underline-offset-4 hover:text-[#F65C78]">About</HeaderLink>
+      <HeaderLink href="https://github.com/siddhsuresh" target="_blank" class="hover:underline hover:underline-offset-4 hover:text-[#F65C78]"
+        >GitHub</HeaderLink
+      >
+    </nav>
+  </header>
+</div>
 <style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+  header {
+    color: white;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
 </style>

@@ -1,0 +1,85 @@
+---
+import Header from "../components/Header.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siddharth Suresh</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&display=swap");
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        margin: 0;
+
+        background: linear-gradient(
+          to right,
+          rgb(1, 16, 57),
+          rgb(7, 21, 65),
+          rgb(17, 24, 39)
+        );
+        background-size: 400% 400%;
+
+        -webkit-animation: AnimationName 12s ease infinite;
+        -moz-animation: AnimationName 12s ease infinite;
+        animation: AnimationName 12s ease infinite;
+      }
+      @-webkit-keyframes AnimationName {
+        0% {
+          background-position: 0% 86%;
+        }
+        50% {
+          background-position: 100% 15%;
+        }
+        100% {
+          background-position: 0% 86%;
+        }
+      }
+      @-moz-keyframes AnimationName {
+        0% {
+          background-position: 0% 86%;
+        }
+        50% {
+          background-position: 100% 15%;
+        }
+        100% {
+          background-position: 0% 86%;
+        }
+      }
+      @keyframes AnimationName {
+        0% {
+          background-position: 0% 86%;
+        }
+        50% {
+          background-position: 100% 15%;
+        }
+        100% {
+          background-position: 0% 86%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="m-10 flex flex-col gap-10 justify-center items-center">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>

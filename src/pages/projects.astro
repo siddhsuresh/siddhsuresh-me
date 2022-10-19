@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const posts = await Astro.glob('../projects/*.md');
+import ProjectItem from "../components/ProjectItem.astro";
+---
+
+<BaseLayout>
+  <h1
+  class="text-5xl font-bold text-center text-gray-100"
+  >Projects</h1>
+  <div class="flex items-center justify-center gap-8">
+    <div class="p-5 grid md:grid-cols-2 gap-[5.5rem]">
+        {posts.map((post) => (
+          <ProjectItem 
+            link={post.frontmatter.link}
+            title={post.frontmatter.title}
+            labels={post.frontmatter.labels}
+            summary={post.compiledContent()}
+            language={post.frontmatter.language}
+            color={post.frontmatter.color}
+          />
+        ))}
+    </div>
+  </div>
+</BaseLayout>
