@@ -4,15 +4,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="CV">
-  <div class="pb-5">
-    <div class="p-10 rounded-xl border-4 flex items-center justify-center">
+  <div class="pb-5 hidden md:block">
+    <div id="content" class="p-10 rounded-xl flex items-center justify-center">
       <Resume />
+      <div id="end"></div>
     </div>
   </div>
-  <!-- <div class="block sm:hidden text-[#279f77] font-bold">
+  <div class="block md:hidden text-[#279f77] font-bold">
     CV is not available on mobile devices.
-  </div> -->
+  </div>
   <a href="https://rxresu.me/" class="text-center text-white w-full"
     >Made Using Reactive Resume</a
   >
 </BaseLayout>
+
+<style>
+  #content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #content:before,
+  #content:after,
+  #end:before,
+  #end:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: #29fc9b; /* or whatever colour */
+    border-style: solid; /* or whatever style */
+    content: " ";
+  }
+  #content:before {
+    top: 0;
+    left: 0;
+    border-width: 5px 0 0 5px;
+  }
+  #content:after {
+    top: 0;
+    right: 0;
+    border-width: 5px 5px 0 0;
+  }
+  #end:before {
+    bottom: 0;
+    right: 0;
+    border-width: 0 5px 5px 0;
+  }
+  #end:after{
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 5px 5px;
+  }
+</style>

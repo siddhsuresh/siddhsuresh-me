@@ -21,7 +21,7 @@ import Tooltip from "./Tooltip.astro";
 
   <a href={link} class="relative block overflow-hidden rounded-2xl max-w-md">
     <div class="p-4" id="content">
-      <div class="p-4 flex flex-row items-center justify-between">
+      <div class="p-6 flex flex-row items-center justify-between">
         <div class="flex flex-col">
           <h5 class="text-lg text-white gap-2">{title}</h5>
           <div class="flex flex-row gap-2">
@@ -43,6 +43,7 @@ import Tooltip from "./Tooltip.astro";
           <div set:html={summary} class="pt-2 prose prose-invert"></div>
         </div>
       </div>
+      <div id="end"></div>
     </div>
   </a>
 
@@ -54,8 +55,8 @@ import Tooltip from "./Tooltip.astro";
   }
   #content:before,
   #content:after,
-  #content > :first-child:before,
-  #content > :first-child:after {
+  #end:before,
+  #end:after {
     position: absolute;
     width: 80px;
     height: 80px;
@@ -73,12 +74,12 @@ import Tooltip from "./Tooltip.astro";
     right: 0;
     border-width: 3px 3px 0 0;
   }
-  #content > :first-child:before {
+  #end:before {
     bottom: 0;
     right: 0;
     border-width: 0 3px 3px 0;
   }
-  #content > :first-child:after {
+  #end:after {
     bottom: 0;
     left: 0;
     border-width: 0 0 3px 3px;
