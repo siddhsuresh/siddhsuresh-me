@@ -10,6 +10,6 @@ import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://siddharthsuresh.vercel.app',
   integrations: [mdx(), sitemap(), tailwind(), compress()]
 });
