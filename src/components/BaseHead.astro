@@ -8,22 +8,6 @@ export interface Props {
 const { title, description, image = '/image.png' } = Astro.props;
 ---
 
-<!-- Google Analytics -->
-<script
-  type="text/partytown"
-  src="https://www.googletagmanager.com/gtag/js?id=G-33BQTFWS17"
->
-
-</script>
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-33BQTFWS17");
-</script>
-
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />

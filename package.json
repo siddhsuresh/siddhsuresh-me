@@ -21,7 +21,6 @@
     "zdog": "^1.1.3"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^1.0.1",
     "@tailwindcss/typography": "^0.5.7"
   }
 }
