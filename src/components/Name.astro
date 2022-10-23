@@ -1,17 +1,30 @@
-<h1><span>Siddharth</span><span> Suresh</span></h1>
+<h1>
+  <span>Siddharth Suresh</span>
+  <span>Aspiring Full Stack Developer & <span class="text-[#3178C6] font-bold">TypeScript Enthusiast</span></span>
+</h1>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&display=swap");
 
   h1 {
     color: #29fc9b;
-    font-size: 8vw;
     text-align: center;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
   }
 
-  h1 span {
+  h1 > :first-child {
+    font-size: 7vw;
     font-weight: 700;
+    display: block;
+  }
+  h1 > :nth-child(2) {
+    font-size: 2vw;
+    font-weight: 400;
     display: block;
   }
 
