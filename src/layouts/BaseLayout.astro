@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import "../styles/global.css";
 export interface Props {
   title?: string;
 }
@@ -45,6 +46,8 @@ const { title } = Astro.props;
         -moz-animation: AnimationName 12s ease infinite;
         animation: AnimationName 12s ease infinite; */
       }
+
+      /* width */
       /* @-webkit-keyframes AnimationName {
         0% {
           background-position: 0% 86%;
