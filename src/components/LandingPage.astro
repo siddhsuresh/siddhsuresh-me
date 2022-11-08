@@ -4,14 +4,14 @@
 <script>
   import Zdog from "zdog";
   let isSpinning = true;
-  let sceneSize = 200;
+  const sceneSize = 200;
   let displaySize;
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  let illo = new Zdog.Illustration({
+  const illo = new Zdog.Illustration({
     element: "#canvas",
     dragRotate: true,
     zoom: 2,
@@ -20,22 +20,22 @@
       displaySize = Math.min(width, height);
       this.zoom = Math.floor(displaySize / sceneSize);
     },
-    // stop spinning when drag starts
     onDragStart: function () {
       isSpinning = false;
     },
   });
 
-  let anchor = new Zdog.Anchor({
+  const anchor = new Zdog.Anchor({
     addTo: illo,
   });
 
-  new Zdog.Ellipse({
+  new Zdog.RoundedRect({
     addTo: anchor,
-    diameter: 50,
-    translate: { z: 20 },
-    stroke: 10,
-    color: "#fff",
+  width: 60,
+  height: 40,
+  cornerRadius: 30,
+  stroke: 5,
+  color: '#fff',
   });
 
   new Zdog.Shape({
@@ -50,19 +50,18 @@
     stroke: 3,
   });
 
-  var objs = [];
+  const objs = [];
 
   for (let i = 0; i < 20; i++) {
-    let posX = getRandomInt(illo.width) - illo.width / 2;
-    let posY = getRandomInt(illo.height) - illo.height / 2;
-    let posZ = getRandomInt(illo.width) - illo.width / 2;
-    let randRot = Math.random() * 0.01;
-    let randZoom = getRandomInt(2) + 0.2;
-    let randStroke = getRandomInt(20) + 2;
-    let randDepth = getRandomInt(40) + 10;
+    const posX = getRandomInt(illo.width) - illo.width / 2;
+    const posY = getRandomInt(illo.height) - illo.height / 2;
+    const posZ = getRandomInt(illo.width) - illo.width / 2;
+    const randRot = Math.random() * 0.01;
+    const randZoom = getRandomInt(2) + 0.2;
+    const randStroke = getRandomInt(20) + 2;
+    const randDepth = getRandomInt(40) + 10;
 
     const newObjt = anchor.copyGraph({
-      // overwrite original options
       translate: { x: posX, y: posY, z: posZ },
       scale: randZoom,
     });

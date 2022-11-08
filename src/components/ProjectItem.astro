@@ -16,11 +16,10 @@ if (language && color) {
   }
 }
 import RepoLanguage from "../components/RepoLanguage.astro";
-import Tooltip from "./Tooltip.astro";
 ---
 
   <a href={link} class="relative block overflow-hidden rounded-2xl max-w-md">
-    <div class="p-4" id="content">
+    <div class="md:p-8 p-4" id="content">
       <div class="p-6 flex flex-row items-center justify-between">
         <div class="flex flex-col">
           <h5 class="text-lg text-white gap-2">{title}</h5>
