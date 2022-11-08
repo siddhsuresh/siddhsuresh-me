@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import "../styles/global.css";
 export interface Props {
   title?: string;
 }
@@ -39,13 +40,15 @@ const { title } = Astro.props;
           rgb(7, 21, 65),
           rgb(17, 24, 39)
         );
-        background-size: 400% 400%;
+        /* background-size: 400% 400%; */
 
-        -webkit-animation: AnimationName 12s ease infinite;
+        /* -webkit-animation: AnimationName 12s ease infinite;
         -moz-animation: AnimationName 12s ease infinite;
-        animation: AnimationName 12s ease infinite;
+        animation: AnimationName 12s ease infinite; */
       }
-      @-webkit-keyframes AnimationName {
+
+      /* width */
+      /* @-webkit-keyframes AnimationName {
         0% {
           background-position: 0% 86%;
         }
@@ -77,7 +80,7 @@ const { title } = Astro.props;
         100% {
           background-position: 0% 86%;
         }
-      }
+      } */
     </style>
   </head>
   <body>
