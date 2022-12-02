@@ -18,19 +18,22 @@
   }
 
   h1 > :first-child {
-    font-size: 8vw;
+    font-size: 6vw;
     font-weight: 700;
     display: block;
   }
   h1 > :nth-child(2) {
-    font-size: 4vw;
+    font-size: 2vw;
     font-weight: 400;
     display: block;
   }
 
   @media (max-width: 768px) {
-    h1 {
+    h1 > :first-child {
       font-size: 12vw;
+    }
+    h1 > :nth-child(2) {
+      font-size: 4vw;
     }
   }
 </style>
