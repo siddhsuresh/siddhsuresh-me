@@ -6,6 +6,10 @@ import OpenSource from "../components/OpenSource.astro";
 ---
 
 <BaseLayout title="Projects">
+  <h1 class="mt-2 text-5xl font-bold text-center text-[#F65C78]">
+    Open Source Contributions
+  </h1>
+  <OpenSource />
   <h1 class="text-5xl font-bold text-center text-[#29fc9b]">Projects</h1>
   <div class="flex items-center justify-center gap-8">
     <div class="p-5 grid md:grid-cols-2 gap-[5.5rem]">
@@ -23,11 +27,7 @@ import OpenSource from "../components/OpenSource.astro";
       }
     </div>
   </div>
-  <h1 class="mt-2 text-5xl font-bold text-center text-[#F65C78]">
-    Open Source Contributions
-  </h1>
-  <OpenSource />
-  <h3 class="text-2xl font-bold text-center text-[#29fc9b]">
+  <!-- <h3 class="text-2xl font-bold text-center text-[#29fc9b]">
     GitHub Stats
   </h3>
   <div class="flex flex-wrap items-center justify-between gap-5">
@@ -39,5 +39,5 @@ import OpenSource from "../components/OpenSource.astro";
       src="https://raw.githubusercontent.com/siddhsuresh/github-stats/c1b05257da4d6c5fdd84d00971190efb5343888f/generated/overview.svg"
       alt="GitHub Stats Overview"
     />
-  </div>
+  </div> -->
 </BaseLayout>
