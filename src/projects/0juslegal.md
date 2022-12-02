@@ -9,4 +9,5 @@ link: "https://juslegal.vercel.app/"
 # Document Management Dashboard
 
 Full stack document management dashboard built with Blitz.js, Next.js, MongoDB, TailwindCSS and TypeScript
+
 Developed templating engine to generate custom-made forms used to generate PDF documents
