@@ -51,7 +51,10 @@
 
   const objs = [];
 
-  for (let i = 0; i < 20; i++) {
+  //if window size is less than 600px, then only 5 object will be created
+  const objCount = window.innerWidth < 600 ? 5 : 20;
+
+  for (let i = 0; i < objCount; i++) {
     const posX = getRandomInt(illo.width) - illo.width / 2;
     const posY = getRandomInt(illo.height) - illo.height / 2;
     const posZ = getRandomInt(illo.width) - illo.width / 2;
