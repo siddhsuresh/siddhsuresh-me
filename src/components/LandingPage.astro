@@ -29,13 +29,12 @@
     addTo: illo,
   });
 
-  new Zdog.RoundedRect({
+  new Zdog.Ellipse({
     addTo: anchor,
-  width: 60,
-  height: 40,
-  cornerRadius: 30,
-  stroke: 5,
-  color: '#fff',
+    diameter: 50,
+    translate: { z: 20 },
+    stroke: 10,
+    color: "#fff",
   });
 
   new Zdog.Shape({
