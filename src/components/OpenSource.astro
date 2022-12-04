@@ -1,3 +1,8 @@
+---
+import Arrow from "./arrow.astro";
+
+---
+
 <div id="content">
   <h2 class="p-10 text-3xl font-bold text-center text-gray-100">
     Level 1 Maintainer for <a href="https://blitzjs.com/" class="text-[#8a3df0]"
@@ -8,7 +13,7 @@
       25+ contributions
     </a>
   </h2>
-  <h2 class="p-10 text-3xl font-bold text-center text-[#29fc9b]">
+  <!-- <h2 class="p-10 text-3xl font-bold text-center text-[#29fc9b]">
     Featured Pull Requests
   </h2>
   <div class="flex flex-wrap items-center justify-center gap-5">
@@ -27,8 +32,16 @@
     <a href="https://github.com/blitz-js/blitz/pull/3891">
       <img src="/get.png" alt="get" class="rounded-xl scale-90" />
     </a>
-  </div>
+  </div> -->
+  <!-- svg array from above div to the next -->
 
+  <!-- View My Contributions in /repo/blitz-js/blitz -->
+  <div class="relative flex flex-wrap items-center justify-center gap-5 text-lg text-white">
+    <a href="/contributions/blitz-js/blitz">
+      View My Contributions
+    </a>
+    <!-- <Arrow/> -->
+    </div>
   <style>
     #content {
       position: relative;

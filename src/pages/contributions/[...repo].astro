@@ -1,0 +1,101 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { repo: "blitz-js/blitz" } },
+    { params: { repo: "siddhsuresh/siddhsuresh-me" } },
+  ];
+}
+import Heatmap from "../../components/heatmap";
+import Stats from "../../components/stats.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const { repo } = Astro.params;
+//find all commits.json files in src/data
+const commits = await Astro.glob("../../data/**/commits.json");
+//find the one that exists in the folder with the same name as the repo
+const myFeaturedPost = commits.find((post) => {
+  if (post.default.at(0).repo === repo) {
+    return post;
+  }
+});
+
+const summary = await Astro.glob("../../data/**/summary.json");
+const mySummary = summary.find((post) => {
+  if (post.default.repo === repo) {
+    return post;
+  }
+});
+
+const opensource = await Astro.glob("../../data/**/opensource.json");
+const myOpensource = opensource.find((post) => {
+  const url = post.default.at(0).url;
+  if (String(url).includes(String(repo))) {
+    return post;
+  }
+});
+
+const markdown = await Astro.glob("../../data/**/*.md");
+
+function findMarkdownFromPR(pr, markdown) {
+  //from the file path of the markdown check if the PR number is in the file name
+  const mymarkdown = markdown.find((post) => {
+    console.log(post.file);
+    console.log(repo, pr);
+    if(post.file.includes(String(repo)) && post.file.includes(String(pr)))
+    {
+      return post;
+    }
+  })
+  return mymarkdown.compiledContent();
+}
+
+console.log(markdown);
+
+// find the number of prs with state merged
+const mergedPRs = myOpensource.default.filter((pr) => {
+  if (pr.state === "merged") {
+    return pr;
+  }
+});
+mySummary.default.mergedPRs = mergedPRs.length;
+mySummary.default.openPRs = myOpensource.default.length - mergedPRs.length;
+---
+
+<BaseLayout title="Blitzjs">
+  <h2 class="xl:text-4xl md:text-2xl text-lg font-bold mb-4 text-white">
+    My Contributions to
+    <span class="text-[#f65c78]">
+      <a
+        href={`https://github.com/${repo}`}
+        target="_blank"
+        rel="noopener noreferrer">{repo}</a
+      >
+    </span>
+  </h2>
+  <div class="w-screen p-10 overflow-hidden">
+    <Heatmap client:only="react" data={myFeaturedPost.default} />
+  </div>
+  <Stats data={mySummary.default} />
+  <!-- <div class="p-5">
+    <!-- display the markdown wrapped in href of the pull request link in a grid 3 columns 
+    <div class="flex flex-wrap items-center justify-center">
+      {
+        myOpensource.default.map((pr) => {
+          console.log(pr)
+          return (
+            <div class="p-5">
+              <a
+                href={pr.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white"
+              >
+                  <div set:html={findMarkdownFromPR(pr.pull_number, markdown)} />
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div> -->
+</BaseLayout>
