@@ -39,8 +39,6 @@ const markdown = await Astro.glob("../../data/**/*.md");
 function findMarkdownFromPR(pr, markdown) {
   //from the file path of the markdown check if the PR number is in the file name
   const mymarkdown = markdown.find((post) => {
-    console.log(post.file);
-    console.log(repo, pr);
     if(post.file.includes(String(repo)) && post.file.includes(String(pr)))
     {
       return post;
@@ -49,7 +47,17 @@ function findMarkdownFromPR(pr, markdown) {
   return mymarkdown.compiledContent();
 }
 
-console.log(markdown);
+function findPullRequest(pr, myOpensource) {
+  const myPR = myOpensource.default.find((post) => {
+    if (post.pull_number === pr) {
+      return post;
+    }
+  });
+  console.log(myPR);
+  return myPR;
+}
+
+const featuredPr = findPullRequest(3943, myOpensource);
 
 // find the number of prs with state merged
 const mergedPRs = myOpensource.default.filter((pr) => {
@@ -76,6 +84,46 @@ mySummary.default.openPRs = myOpensource.default.length - mergedPRs.length;
     <Heatmap client:only="react" data={myFeaturedPost.default} />
   </div>
   <Stats data={mySummary.default} />
+  <div class="p-10 flex flex-wrap items-cetner justify-center" id="content">
+    <div class="w-full p-10">
+      <h2 class="xl:text-4xl md:text-2xl text-lg font-bold mb-4 text-white text-center">
+        Featured PR
+      </h2>
+      <h2 class="pt-5 xl:text-4xl md:text-2xl text-lg font-bold mb-4 text-white text-center">
+        <span class="text-[#f65c78]">
+          <a
+            href={featuredPr.url}
+            target="_blank"
+            rel="noopener noreferrer">{featuredPr.title}</a
+          >
+        </span>
+      </h2>
+  </div>
+  </div> 
+  <div class="p-5">
+    <div set:html={findMarkdownFromPR(3943, markdown)} class="prose prose-invert"/>
+  </div>
+  <!-- <div id="end"></div> -->
+
+  <!-- <div class="p-5 flex flex-wrap items-center justify-center gap-8">
+    {myOpensource.default.map((pr)=>{
+      // console.log(pr)
+      const url = pr.url
+      const date = pr.date
+      const mergedAt = pr.merged_at
+      const comments = pr.comments
+      const title = pr.title
+      const commits = pr.commits
+      const additions = pr.additions
+      const deletions = pr.deletions
+      const changedFiles = pr.files
+      const state = pr.state
+      return(
+        <Card additions={additions} deletions={deletions} changedFiles={changedFiles} commits={commits} comments={comments} mergedAt={mergedAt} date={date} url={url} title={title} state={state}
+        data={findMarkdownFromPR(pr.pull_number, markdown)}/>
+      )
+    })}
+  </div> -->
   <!-- <div class="p-5">
     <!-- display the markdown wrapped in href of the pull request link in a grid 3 columns 
     <div class="flex flex-wrap items-center justify-center">
@@ -99,3 +147,42 @@ mySummary.default.openPRs = myOpensource.default.length - mergedPRs.length;
     </div>
   </div> -->
 </BaseLayout>
+
+<style>
+  #content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #content:before,
+  #content:after,
+  #end:before,
+  #end:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: #29fc9b; /* or whatever colour */
+    border-style: solid; /* or whatever style */
+    content: " ";
+  }
+  #content:before {
+    top: 0;
+    left: 0;
+    border-width: 3px 0 0 3px;
+  }
+  #content:after {
+    top: 0;
+    right: 0;
+    border-width: 3px 3px 0 0;
+  }
+  #end:before {
+    bottom: 0;
+    right: 0;
+    border-width: 0 3px 3px 0;
+  }
+  #end:after {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 3px 3px;
+  }
+</style>

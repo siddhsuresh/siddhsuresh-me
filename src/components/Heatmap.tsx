@@ -1,4 +1,4 @@
-import CalendarHeatmap from "../heatmap/calendar-heatmap";
+import CalendarHeatmap from "./calendar-heatmap";
 
 export default function Heatmap({ data }) {
   return (
