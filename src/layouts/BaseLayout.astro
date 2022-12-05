@@ -33,57 +33,16 @@ const { title } = Astro.props;
         justify-content: center;
         min-height: 100%;
         margin: 0;
-
-        background: linear-gradient(
-          to right,
-          rgb(1, 16, 57),
-          rgb(7, 21, 65),
-          rgb(17, 24, 39)
-        );
-        /* background-size: 400% 400%; */
-
-        /* -webkit-animation: AnimationName 12s ease infinite;
-        -moz-animation: AnimationName 12s ease infinite;
-        animation: AnimationName 12s ease infinite; */
+        background-image: url("/mesh-664.png");
+        background-position: center; /* Center the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: #rgb(17, 24, 39)
       }
-
-      /* width */
-      /* @-webkit-keyframes AnimationName {
-        0% {
-          background-position: 0% 86%;
-        }
-        50% {
-          background-position: 100% 15%;
-        }
-        100% {
-          background-position: 0% 86%;
-        }
-      }
-      @-moz-keyframes AnimationName {
-        0% {
-          background-position: 0% 86%;
-        }
-        50% {
-          background-position: 100% 15%;
-        }
-        100% {
-          background-position: 0% 86%;
-        }
-      }
-      @keyframes AnimationName {
-        0% {
-          background-position: 0% 86%;
-        }
-        50% {
-          background-position: 100% 15%;
-        }
-        100% {
-          background-position: 0% 86%;
-        }
-      } */
     </style>
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <div class="m-10 flex flex-col gap-10 justify-center items-center">
       <Header />
       <slot />

@@ -1,0 +1,25 @@
+# create a github action cron job to run this workflow every day at 12:00 AM
+name: Daily Update
+on:
+  # schedule:
+  #   - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ../../workflow/action.yml
+        with:
+          username: siddhsuresh
+          repo: ['blitz-js/blitz','siddhsuresh/siddhsuresh-me']
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Daily Update
+          commit_options: '--no-verify --signoff'
+          commit_user_name: siddhsuresh
+          commit_user_email: siddh.suresh@gmail.com
+          
+      

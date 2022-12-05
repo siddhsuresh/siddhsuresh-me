@@ -1,0 +1,123 @@
+---
+export interface Props {
+  url: string;
+  date: string;
+  mergedAt: string;
+  comments: string;
+  title: string;
+  commits: string;
+  additions: string;
+  deletions: string;
+  changedFiles: string;
+  data: any;
+  state: string;
+}
+
+const {
+  url,
+  date,
+  mergedAt,
+  comments,
+  title,
+  commits,
+  additions,
+  deletions,
+  changedFiles,
+  state,
+  data,
+} = Astro.props;
+
+//generate a random hash from the url
+import crypto from 'crypto';
+const hash = crypto.createHash('md5').update(url).digest('hex');
+---
+
+<a href={url} class="relative block overflow-hidden rounded-2xl max-w-md">
+  <div class="p-4" id="content">
+    <div class="p-6 flex flex-row items-center justify-center">
+      <div class="flex flex-col">
+        <h5 class="text-lg text-white gap-2">{title}</h5>
+        <div class="flex flex-wrap gap-2 p-2">
+          <span class="text-xs text-gray-400">
+            📅 {date}
+          </span>
+          <span class="text-xs text-cyan-400">
+            📦 {commits}
+          </span>
+          <span class="text-xs text-blue-400">
+            📝 {changedFiles}
+          </span>
+          <span class="text-xs text-green-400">
+            📈 {additions}
+          </span>
+          <span class="text-xs text-red-400">
+            📉 {deletions}
+          </span>
+          <span class="text-xs text-yellow-400">
+            💬 {comments}
+          </span>
+          <span class="text-xs text-purple-400">
+            📅 {mergedAt}
+          </span>
+          <span class="text-xs text-pink-400">
+            ⏳ {state}
+          </span>
+        </div>
+        <div class="relative h-24 overflow-hidden" id={hash}>
+          <div set:html={data} class="prose prose-invert"></div>
+          <div class="absolute bottom-0 right-50" id={
+            hash + '-toggle'
+          }>
+            <button class="bg-gray-800 text-white px-4 py-2 rounded-full">
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="end"></div>
+  </div>
+</a>
+
+<script>
+
+</script>
+
+<style>
+  #content {
+    position: relative;
+    /* set fixed height and width */
+    width: 40vw;
+  }
+  #content:before,
+  #content:after,
+  #end:before,
+  #end:after {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: #29fc9b; /* or whatever colour */
+    border-style: solid; /* or whatever style */
+    content: " ";
+  }
+  #content:before {
+    top: 0;
+    left: 0;
+    border-width: 3px 0 0 3px;
+  }
+  #content:after {
+    top: 0;
+    right: 0;
+    border-width: 3px 3px 0 0;
+  }
+  #end:before {
+    bottom: 0;
+    right: 0;
+    border-width: 0 3px 3px 0;
+  }
+  #end:after {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 3px 3px;
+  }
+</style>
