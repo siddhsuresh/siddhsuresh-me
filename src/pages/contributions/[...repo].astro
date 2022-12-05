@@ -28,7 +28,7 @@ const mySummary = summary.find((post) => {
 
 const opensource = await Astro.glob("../../data/**/opensource.json");
 const myOpensource = opensource.find((post) => {
-  const url = post.default.at(0).url;
+  const url = post.default.at(0)?.url;
   if (String(url).includes(String(repo))) {
     return post;
   }
@@ -53,7 +53,6 @@ function findPullRequest(pr, myOpensource) {
       return post;
     }
   });
-  console.log(myPR);
   return myPR;
 }
 
