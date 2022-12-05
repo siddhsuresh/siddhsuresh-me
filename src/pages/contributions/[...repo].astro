@@ -46,7 +46,7 @@ function findMarkdownFromPR(pr, markdown) {
       return post;
     }
   })
-  return mymarkdown.compiledContent();
+  return mymarkdown?.compiledContent();
 }
 
 function findPullRequest(pr, myOpensource) {
