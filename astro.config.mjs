@@ -12,12 +12,7 @@ import compress from "astro-compress";
 import react from "@astrojs/react";
 
 // https://astro.build/config
-import vercel from "@astrojs/vercel/serverless";
-
-// https://astro.build/config
 export default defineConfig({
   site: 'https://siddharthsuresh.me',
   integrations: [mdx(), sitemap(), tailwind(), compress(), react()],
-  output: "server",
-  adapter: vercel()
 });
