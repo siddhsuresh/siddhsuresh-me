@@ -1,43 +1,21 @@
 {
-  "name": "@siddhsuresh/portfolio-website",
-  "type": "module",
-  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@astrojs/mdx": "^0.11.4",
-    "@astrojs/react": "^1.2.2",
-    "@astrojs/rss": "^1.0.2",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^1.0.2",
-    "@astrojs/tailwind": "^2.1.0",
-    "@astrojs/vercel": "^2.3.4",
-    "@octokit/rest": "^19.0.5",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "argparse": "^2.0.1",
-    "astro": "^1.5.0",
-    "astro-compress": "^1.0.12",
-    "d3": "^7.7.0",
-    "d3-collection": "^1.0.7",
-    "moment": "^2.29.4",
-    "react": "^18.0.0",
-    "react-calendar-heatmap": "^1.9.0",
-    "react-dom": "^18.0.0",
-    "reactjs-calendar-heatmap": "^0.2.3",
-    "svelte": "^3.46.4",
-    "svelte-heatmap": "^1.0.2",
-    "tailwindcss": "^3.0.24",
-    "zdog": "^1.1.3"
+    "build": "turbo run build",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=site^... && changeset publish"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.7"
-  }
+    "@changesets/cli": "^2.22.0",
+    "eslint": "^7.32.0",
+    "eslint-config-siddhsuresh": "workspace:*",
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@7.15.0"
 }
