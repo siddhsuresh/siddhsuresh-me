@@ -12,7 +12,12 @@ import compress from "astro-compress";
 import react from "@astrojs/react";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://siddharthsuresh.me',
-  integrations: [mdx(), sitemap(), tailwind(), compress(), react()],
+  integrations: [mdx(), sitemap(), tailwind(), compress(), react(), image({
+    serviceEntryPoint: '@astrojs/image/sharp'
+  })]
 });
