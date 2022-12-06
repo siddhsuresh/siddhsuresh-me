@@ -1,13 +1,14 @@
 ---
-//@ts-nocheck
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from '@astrojs/image/components';
+import pic from "../../public/sidd.png";
 ---
 
 <BaseLayout title="About">
   <div class="prose xl:prose-xl prose-invert">
-    <h3>🚀 Hey there!</h3>
+    <div class="text-2xl">🚀 Hey there!</div>
     <h1>I'm Siddharth Suresh</h1>
-    <img src="/sidd.png" alt="Siddharth Suresh" class="invert" />
+    <Image src={pic} alt="Siddharth Suresh" class="invert" format="avif" loading="eager" />
     <p>
       I am full stack developer and a student at Vellore Institute of
       Technology, Chennai. Currenly pursuing B.Tech in Computer Science with a
@@ -21,7 +22,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       Currently contributing in the full stack toolkit framework - Blitzjs and
       learning Rust.
     </p>
-    <h3 class="text-lg text-white gap-2">Contact Me</h3>
+    <!-- <div class="text-xl text-white gap-2">Contact Me</div> -->
+    <div class="xl:text-2xl lg:text-xl md:text-lg text-white gap-2 font-bold pt-2 pb-2">Contact Me</div>
     <a href="mailto:siddharth@siddharthsuresh.me" class="no-underline"
       >✉️ Send Me an Email - siddharth@siddharthsuresh.me</a
     >
