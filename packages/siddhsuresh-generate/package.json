@@ -10,8 +10,8 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.js --format esm --dts --external react --target node16",
-    "dev": "tsup src/index.js --format esm --watch --dts --external react --target node16",
+    "build": "tsup src/index.ts --format esm --target node16",
+    "dev": "tsup src/index.ts --format esm --watch --target node16",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
