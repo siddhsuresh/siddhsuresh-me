@@ -8,5 +8,5 @@ link: "https://sanjanasuresh.art/"
  
 # Sanjana Suresh
 
-Digital art portfolio which an interactive homepage 
+Digital art portfolio with an interactive homepage 
 using next.js and three.js
