@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+      "target": "es2022",
+      "module": "commonjs"
+  },
+  "extends": "@siddhsuresh/tsconfig/react-library.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

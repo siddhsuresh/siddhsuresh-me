@@ -1,0 +1,6 @@
+{
+    "extends": "@siddhsuresh/tsconfig/astro.json",
+    "include": ["."],
+    "exclude": ["dist", "build", "node_modules"]
+  }
+  

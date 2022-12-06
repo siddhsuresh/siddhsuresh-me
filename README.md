@@ -1,26 +1,76 @@
-# 🚀 Hey, I'm Siddharth Suresh
-I am currently a 3rd year student in Vellore Institute of Technology, Chennai studying B. Tech Computer Science with specialization in Cyber Physical Systems
+# Turborepo Design System starter with Changesets
 
-![image](https://user-images.githubusercontent.com/83594610/197033811-323f4f4e-6323-4439-89be-8c818431e5d7.png)
+This is an official React design system starter powered by Turborepo. Versioning and package publishing is handled by [Changesets](https://github.com/changesets/changesets) and fully automated with GitHub Actions.
 
-## Lighthouse Score
+## What's inside?
 
-![image](https://user-images.githubusercontent.com/83594610/197402241-a492c737-1ea6-43a7-95f9-795b36bc55a5.png)
+This Turborepo includes the following:
 
+### Apps and Packages
 
-## Frameworks Used:
-#### [Astro](https://astro.build/)
-#### [tailwindcss](https://tailwindcss.com)
-#### [Zdog](https://zzz.dog)
+- `docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
+- `@siddhsuresh/core`: core React components
+- `@siddhsuresh/utils`: shared React utilities
+- `@siddhsuresh/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
+- `eslint-config-acme`: ESLint preset
 
-## To Run:
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-```bash
-pnpm dev
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+## Using this example
+
+Run the following command:
+
+```sh
+npx degit vercel/turbo/examples/with-changesets with-changesets
+cd with-changesets
+pnpm install
+git init . && git add . && git commit -m "Init"
 ```
 
-## To Build:
+### Useful commands
 
-```bash
-pnpm build
+- `yarn build` - Build all packages and the docs site
+- `yarn dev` - Develop all packages and the docs site
+- `yarn lint` - Lint all packages
+- `yarn changeset` - Generate a changeset
+- `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
+
+### Changing the npm organization scope
+
+The npm organization scope for this design system starter is `@acme`. To change this, it's a bit manual at the moment, but you'll need to do the following:
+
+- Rename folders in `packages/*` to replace `acme` with your desired scope
+- Search and replace `acme` with your desired scope
+- Re-run `yarn install`
+
+## Versioning and Publishing packages
+
+Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familiarize yourself with the workflow.
+
+This example comes with automated npm releases setup in a [GitHub Action](https://github.com/changesets/action). To get this working, you will need to create an `NPM_TOKEN` and `GITHUB_TOKEN` in your repository settings. You should also install the [Changesets bot](https://github.com/apps/changeset-bot) on your GitHub repository as well.
+
+For more information about this automation, refer to the official [changesets documentation](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
+
+### npm
+
+If you want to publish package to the public npm registry and make them publicly available, this is already setup.
+
+To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
+
+```diff
+- "publishConfig": {
+-  "access": "public"
+- },
 ```
+
+### GitHub Package Registry
+
+See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
