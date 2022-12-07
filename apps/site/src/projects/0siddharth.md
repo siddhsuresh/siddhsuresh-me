@@ -1,8 +1,8 @@
 ---
 title: Personal Website
 labels: [astro,tailwindcss,d3,react,turborepo]
-language: ["Astro"] 
-color: ["#ff5a03"]
+language: ["Astro","TypeScript"] 
+color: ["#ff5a03","#3178C6"]
 link: "https://siddharthsuresh.me/"
 ---
  
