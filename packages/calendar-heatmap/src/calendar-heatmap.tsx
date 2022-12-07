@@ -83,52 +83,52 @@ class CalendarHeatmap extends React.Component {
     this.calcDimensions()
   }
 
-  // Calculate dimensions based on available width
-  calcDimensions() {
-    let dayIndex = Math.round((moment() - moment().subtract(1, 'year').startOf('week')) / 86400000)
-    let colIndex = Math.trunc(dayIndex / 7)
-    let numWeeks = colIndex + 1
+  // // Calculate dimensions based on available width
+  // calcDimensions() {
+  //   let dayIndex = Math.round((moment() - moment().subtract(1, 'year').startOf('week')) / 86400000)
+  //   let colIndex = Math.trunc(dayIndex / 7)
+  //   let numWeeks = colIndex + 1
 
-    this.settings.width = this.container.offsetWidth < 1000 ? 1000 : this.container.offsetWidth
-    this.settings.item_size = ((this.settings.width - this.settings.label_padding) / numWeeks - this.settings.gutter)
-    this.settings.height = this.settings.label_padding + 7 * (this.settings.item_size + this.settings.gutter)
-    this.svg.attr('width', this.settings.width)
-      .attr('height', this.settings.height)
+  //   this.settings.width = this.container.offsetWidth < 1000 ? 1000 : this.container.offsetWidth
+  //   this.settings.item_size = ((this.settings.width - this.settings.label_padding) / numWeeks - this.settings.gutter)
+  //   this.settings.height = this.settings.label_padding + 7 * (this.settings.item_size + this.settings.gutter)
+  //   this.svg.attr('width', this.settings.width)
+  //     .attr('height', this.settings.height)
 
-    if ( !!this.props.data && !!this.props.data[0].summary ) {
-      this.drawChart()
-    }
-  }
+  //   if ( !!this.props.data && !!this.props.data[0].summary ) {
+  //     this.drawChart()
+  //   }
+  // }
 
-  parseData() {
-    if ( !this.props.data ) { return }
+  // parseData() {
+  //   if ( !this.props.data ) { return }
 
-    // Get daily summary if that was not provided
-    if ( !this.props.data[0].summary ) {
-      this.props.data.map(d => {
-        let summary = d.details.reduce((uniques, project) => {
-          if (!uniques[project.name]) {
-            uniques[project.name] = {
-              'value': project.value
-            }
-          } else {
-            uniques[project.name].value += project.value
-          }
-          return uniques
-        }, {})
-        let unsorted_summary = Object.keys(summary).map(key => {
-          return {
-            'name': key,
-            'value': summary[key].value
-          }
-        })
-        d.summary = unsorted_summary.sort((a, b) => {
-          return b.value - a.value
-        })
-        return d
-      })
-    }
-  }
+  //   // Get daily summary if that was not provided
+  //   if ( !this.props.data[0].summary ) {
+  //     this.props.data.map(d => {
+  //       let summary = d.details.reduce((uniques, project) => {
+  //         if (!uniques[project.name]) {
+  //           uniques[project.name] = {
+  //             'value': project.value
+  //           }
+  //         } else {
+  //           uniques[project.name].value += project.value
+  //         }
+  //         return uniques
+  //       }, {})
+  //       let unsorted_summary = Object.keys(summary).map(key => {
+  //         return {
+  //           'name': key,
+  //           'value': summary[key].value
+  //         }
+  //       })
+  //       d.summary = unsorted_summary.sort((a, b) => {
+  //         return b.value - a.value
+  //       })
+  //       return d
+  //     })
+  //   }
+  // }
 
   drawChart() {
     if ( this.overview === 'global' ) {
@@ -1711,6 +1711,8 @@ CalendarHeatmap.defaultProps = {
   color: '#ff4500',
   handler: undefined,
 }
+
+// const CalendarHeatMapFunctional = 
 
 
 export default CalendarHeatmap
