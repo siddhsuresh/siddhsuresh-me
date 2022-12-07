@@ -3,7 +3,7 @@ title: Library Project
 language: ["Python"]
 color: ["#3776AB"]
 link: "https://github.com/siddhsuresh/blueblack-Library-Database-Management"
-labels: [django,python,three.js,tailwindcss]
+labels: [django,python,tailwindcss]
 ---
 
 # Library Management System
