@@ -23,6 +23,7 @@ jobs:
         run: pnpm install  --frozen-lockfile
       - run: |
           cd ./apps/site
+          npm i -g wait-on
           pnpm preview & npx wait-on http://localhost:3000
       - name: Run axe
         run: |
