@@ -23,7 +23,7 @@ jobs:
         run: pnpm install --frozen-lockfile && npm install -g @lhci/cli@0.8.x
       - name: Build
         run: pnpm build
-      - run: |
-          cd ./apps/site
       - name: Run lighthouse
-        run: lhci autorun
+        run: |
+          cd ./apps/site
+          lhci autorun
