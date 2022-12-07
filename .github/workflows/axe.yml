@@ -21,6 +21,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install  --frozen-lockfile
+      - name: Build
+        run: pnpm build
       - run: |
           cd ./apps/site
           npm i -g wait-on
