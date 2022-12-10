@@ -10,8 +10,9 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --target node16",
-    "dev": "tsup src/index.ts --format esm --watch --target node16",
+    "build": "tsup src/index.ts --format esm,cjs --target es2022",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --target es2022",
+    "generate": "node dist/index.js",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
