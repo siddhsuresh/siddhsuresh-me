@@ -9,7 +9,7 @@ This Turborepo includes the following:
 ### Apps and Packages
 
 - `docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
-- `@siddhsuresh/core`: core React components
+- `@siddhsuresh/core`: core React components 
 - `@siddhsuresh/utils`: shared React utilities
 - `@siddhsuresh/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
 - `eslint-config-acme`: ESLint preset
